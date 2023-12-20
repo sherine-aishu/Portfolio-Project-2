@@ -1,0 +1,29 @@
+This documentation will explain how we can configure additional host to prometheus as targets. Once we configure this, then prometheus will pull metrics from this target endpoint.
+
+# Install exporters on host
+As we know prometheus cannot pull metrics directly from hosts. It requires an exporter to basically collect the metrics and expose which can be pulled by prometheus.
+For this we are using node exporter.
+The installation of node exporter is already covered in document "Node Exporter using manual and Node Exporter as a Service"
+As a result in your local machine you should be able to metrics via curl http://localhost:9100/metrics (or) curl http://127.0.0.1:9100/metrics (or) curl http://0.0.0.0:9100/metrics 
+
+# Port opening in security groups
+Promtheus will pull metrics from host
+Here prometheus is running on port 9090 (promIP:9090) ; node exporter is running on host port nodeexporter-hostIP:9100
+Hence, Prom is trying to access host in port 9100, hence in SG of prom under outbound allow IP of node for port 9100. 
+Similarly, in node IP SG, under inbound allow prom IP for port 9090.
+
+In short: In Prom SG : outbound on 9100 for hostip; 
+          In host SG : inbound on 9090 for promip
+
+# Updating the yaml file of prometheus
+For prometheus to scrape metrics from the node exporter of your host machine, we need to update the prometheus.yml file.
+
+  - job_name: "host_metrics"
+    static_configs:
+      - targets: ["hostIP:9100"]
+
+# Restart the daemon and service
+sudo systemctl daemon-reload
+sudo systemctl enable prometheus
+sudo systemctl restart prometheus
+sudo systemctl status prometheus
