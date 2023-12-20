@@ -1,0 +1,34 @@
+Now, lets create service for node_exporter
+
+# Creating user and group for running node exporter:
+sudo useradd --no-create-home --shell /bin/false node_exporter
+sudo usermod -aG node_exporter node_exporter
+cd node_exporter-1.7.0.linux-amd64/
+sudo chown node_exporter:node_exporter /tools/node_exporter-1.7.0.linux-amd64
+
+# Creating service file for Node exporter
+vi /etc/systemd/system/node_exporter.service
+**************************************************************************************************   
+[Unit]
+Description=Node Exporter
+After=network.target
+
+[Service]
+User=node_exporter
+Group=node_exporter
+Type=simple
+ExecStart=/tools/node_exporter-1.7.0.linux-amd64/node_exporter
+
+[Install]
+WantedBy=multi-user.target
+**************************************************************************************************  
+
+# Restaring the daemon and node-exporter  
+sudo systemctl daemon-reload
+sudo systemctl restart node_exporter
+sudo systemctl enable node_exporter
+sudo systemctl start node_exporter
+sudo systemctl status node_exporter
+
+Note: If you face any permission related issues ,try giving full access to the node exporter folder as below:
+chmod 777 /tools/node_exporter-1.7.0.linux-amd64
