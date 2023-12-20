@@ -13,6 +13,10 @@ Grafana is a service which is used to visualize the data being scraped by a vari
 
 Exporters are agents which are installed on the host machines to collect and expose metrics locally. Prometheus will pull the metrics that are being exposed by the exporters. Eg: Node Exporter.
 
+***Firewall and Security groups***
+
+firewall-cmd command is used to allow incoming requests on system (system here is nothing but the operating system) whereas security groups in ec2 are responsible for managing the incoming and outgoing request on server.
+
 Step 1: Prometheus using manual
 
 Step 2: Prometheus as a service
