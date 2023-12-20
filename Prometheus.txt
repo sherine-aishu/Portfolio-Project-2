@@ -1,0 +1,58 @@
+mkdir tools
+cd tools/
+wget https://github.com/prometheus/prometheus/releases/download/v2.49.0-rc.0/prometheus-2.49.0-rc.0.linux-amd64.tar.gz
+tar -xvf prometheus-2.49.0-rc.0.linux-amd64.tar.gz prometheus-2.49.0-rc.0.linux-amd64/
+cd prometheus-2.49.0-rc.0.linux-amd64/
+sudo firewall-cmd --permanent --add-port=9090/tcp
+sudo firewall-cmd --reload
+./prometheus (or) ./prometheus --config.file=prometheus.yml
+   
+In browser publicip:9090
+   
+under targets we will have localhost:9090/metrics , this is the default metrics that are collected by prom itself. It doesn't require any other exporters.
+
+These metrics are about prom server itself
+
+
+
+Now lets create service for prometheus:
+
+
+
+
+  125  cd /etc/systemd/system
+  127  vi prometheus.service
+**************************************************
+[Unit]
+Description=Prometheus Server
+After=network.target
+
+[Service]
+User=prometheus
+Group=prometheus
+Type=simple
+ExecStart=/tools/prometheus-2.49.0-rc.0.linux-amd64/prometheus \
+    --config.file /tools/prometheus-2.49.0-rc.0.linux-amd64/prometheus.yml \
+    --storage.tsdb.path /tools/prometheus-2.49.0-rc.0.linux-amd64/data \
+    --web.console.templates=/tools/prometheus-2.49.0-rc.0.linux-amd64/consoles \
+    --web.console.libraries=/tools/prometheus-2.49.0-rc.0.linux-amd64/console_libraries
+
+[Install]
+WantedBy=multi-user.target
+***************************************************
+
+  154  sudo useradd -r -s /bin/false prometheus
+  155  sudo usermod -aG prometheus prometheus
+  156  sudo chown -R prometheus:prometheus /tools/prometheus-2.49.0-rc.0.linux-amd64
+  157  sudo systemctl daemon-reload
+  158  sudo systemctl enable prometheus
+  159  sudo systemctl start prometheus
+  160  sudo systemctl status prometheus
+ 
+ 
+if this doesn't wrk, then give full access to the tools , prom folder using chmod 777 command
+ --storage.tsdb.path value can be fetched from the prom gui 
+
+
+
+  
