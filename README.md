@@ -2,12 +2,15 @@
 Monitoring the host and application metrics using prometheus and grafana.
 
 ***Prometheus***
+
 Prometheus is a time series database used to store and scrape metrics from target endpoints.
 
 ***Grafana***
+
 Grafana is a service which is used to visualize the data being scraped by a variety of datasources like prometheus.
 
 ***Exporters***
+
 Exporters are agents which are installed on the host machines to collect and expose metrics locally. Prometheus will pull the metrics that are being exposed by the exporters. Eg: Node Exporter.
 
 Step 1: Prometheus using manual
