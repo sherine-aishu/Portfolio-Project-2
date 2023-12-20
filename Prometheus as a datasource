@@ -1,0 +1,15 @@
+This document explains how we can configure prometheus as a datasource to grafana.
+
+# Configuring Prometheus as a data source
+Open Grafana in your web browser (http://publicip:3000).
+Click on Configuration menu.
+Select Data Sources.
+Click on “Add data source”.
+Choose “Prometheus” as the type.
+Set the appropriate Prometheus server URL, such as http://publicip:9090/
+Click Save & Test.
+
+# Verifying the metrics
+Select you data source 
+At the bottom you will have an explore option
+Click it and query for the metrics (eg: up)
