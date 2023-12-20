@@ -1,17 +1,26 @@
+# Creating a directory for our tools
 mkdir tools
 cd tools/
+
+# Downloading the binary from its official website
 wget https://github.com/prometheus/prometheus/releases/download/v2.49.0-rc.0/prometheus-2.49.0-rc.0.linux-amd64.tar.gz
 tar -xvf prometheus-2.49.0-rc.0.linux-amd64.tar.gz prometheus-2.49.0-rc.0.linux-amd64/
 cd prometheus-2.49.0-rc.0.linux-amd64/
+
+# Allowing the ports at system level to enable access to prometheus
 sudo firewall-cmd --permanent --add-port=9090/tcp
 sudo firewall-cmd --reload
-./prometheus (or) ./prometheus --config.file=prometheus.yml
-   
-In browser publicip:9090
-   
-under targets we will have localhost:9090/metrics , this is the default metrics that are collected by prom itself. It doesn't require any other exporters.
 
-These metrics are about prom server itself
+# Starting the prometheus service manually (But this is suitable only for development and testing, in production environment it is recommended to run prometheus as a service because in manual method it will not restart automatically if prometheus gets crashed. Handling prometheus as a service enables the systemd to take care of it and boots it up automatically if server is restarted)
+./prometheus (or) ./prometheus --config.file=prometheus.yml
+
+# Accessing prometheus on gui
+In browser you can access prometheus using:
+publicip:9090
+   
+(Under targets tab we will have localhost:9090/metrics as an endpoint, this is the default metrics that are collected by prometheus itself. It doesn't require any other exporters. These metrics are about prometheus server itself) 
+
+
 
 
 
