@@ -25,3 +25,8 @@ sudo systemctl enable grafana-server
 sudo systemctl start grafana-server
 sudo systemctl status grafana-server
 
+# Accessing grafana
+We can access grafana gui using :
+http://publicip:3000
+username : admin
+password : admin
