@@ -3,11 +3,11 @@ Monitoring the host and application metrics using prometheus and grafana.
 
 ***Prometheus***
 
-Prometheus is a time series database used to store and scrape metrics from target endpoints.
+Prometheus is a time series database used to store and scrape metrics from target endpoints.\n
 
 ***Grafana***
 
-Grafana is a service which is used to visualize the data being scraped by a variety of datasources like prometheus.
+Grafana is a service which is used to visualize the data being scraped by a variety of datasources like prometheus.\n
 
 ***Exporters***
 
