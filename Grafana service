@@ -20,6 +20,9 @@ sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 # Installing grafana
 sudo dnf install grafana
 
+# Allowing the ports at system level to enable access to grafana from browser on port 3000
+sudo firewall-cmd --permanent --add-port=3000/tcp
+
 # Starting the service
 sudo systemctl enable grafana-server
 sudo systemctl start grafana-server
