@@ -8,6 +8,8 @@ tar -xvf prometheus-2.49.0-rc.0.linux-amd64.tar.gz prometheus-2.49.0-rc.0.linux-
 cd prometheus-2.49.0-rc.0.linux-amd64/
 
 # Allowing the ports at system level to enable access to prometheus
+sudo yum install firewalld
+sudo systemctl start firewalld
 sudo firewall-cmd --permanent --add-port=9090/tcp
 sudo firewall-cmd --reload
 
