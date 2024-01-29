@@ -17,19 +17,19 @@ Exporters are agents which are installed on the host machines to collect and exp
 
 firewall-cmd command is used to allow incoming requests on system (system here is nothing but the operating system) whereas security groups in ec2 are responsible for managing the incoming and outgoing request on server.
 
-Step 1: Prometheus using manual
-
-Step 2: Prometheus as a service
-
-Step 3: Node Exporter using manual
-
-Step 4: Node Exporter as a service
-
-Step 5: Adding hosts to prometheus as targets
-
-Step 6: Grafana service
-
-Step 7: Adding prometheus as a datasource
+        Step 1: Prometheus using manual
+        
+        Step 2: Prometheus as a service
+        
+        Step 3: Node Exporter using manual
+        
+        Step 4: Node Exporter as a service
+        
+        Step 5: Adding hosts to prometheus as targets
+        
+        Step 6: Grafana service
+        
+        Step 7: Adding prometheus as a datasource
 
 
 - *In this setup, We have installed Prometheus, Grafana in same server.*  
