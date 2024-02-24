@@ -19,6 +19,9 @@ sudo firewall-cmd --reload
            - targets: ["localhost:9100"]
 *********************************************************************************************** 
 
+# Validate the syntax of your prometheus.yml file
+./promtool check config prometheus.yml
+
 # Starting the node exporter manually
  ./node_exporter
 
