@@ -4,7 +4,7 @@ This documentation will explain how we can configure additional host to promethe
 As we know prometheus cannot pull metrics directly from hosts. It requires an exporter to basically collect the metrics and expose which can be pulled by prometheus.
 For this we are using node exporter.
 The installation of node exporter is already covered in document "Node Exporter using manual and Node Exporter as a Service"
-As a result in your local machine you should be able to metrics via curl http://localhost:9100/metrics (or) curl http://127.0.0.1:9100/metrics (or) curl http://0.0.0.0:9100/metrics 
+As a result in your local host machine you should be able to see metrics via curl http://localhost:9100/metrics (or) curl http://127.0.0.1:9100/metrics (or) curl http://0.0.0.0:9100/metrics 
 
 # Port opening in security groups
 Promtheus will pull metrics from host
