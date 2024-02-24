@@ -23,6 +23,8 @@ sudo firewall-cmd --reload
  ./node_exporter
 
 # Verifying the node exporter endpoint metrics in prometheus gui
-targets --> http:localhost:9100/metrics
+targets --> http://localhost:9100/metrics
 graph --> search for node which will list out all the metrics collected by node exporter. Thus you have configured node exporter.
- 
+
+
+Note: If the node exporter is not listed under metrics, then restart your prometheus using systemctl restart prometheus.service
