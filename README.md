@@ -38,3 +38,5 @@ firewall-cmd command is used to allow incoming requests on system (system here i
 
 - *We have added a new host as target by collecting its metrics using node exporter (Step 5: Adding hosts to prometheus as targets)*
 
+- *Then we are installing grafana and configuring it to visualize the data from the datasources like prometheus*
+
