@@ -10,6 +10,6 @@ Set the appropriate Prometheus server URL, such as http://publicip:9090/
 Click Save & Test.
 
 # Verifying the metrics
-Select you data source 
+Select your data source 
 At the bottom you will have an explore option
 Click it and query for the metrics (eg: up)
