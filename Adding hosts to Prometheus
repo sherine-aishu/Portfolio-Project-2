@@ -27,3 +27,6 @@ sudo systemctl daemon-reload
 sudo systemctl enable prometheus
 sudo systemctl restart prometheus
 sudo systemctl status prometheus
+
+
+Note: If connection refused or timeout error, then open all traffic in inbound for both these hosts.
