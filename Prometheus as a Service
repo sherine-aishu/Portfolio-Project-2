@@ -12,11 +12,11 @@ After=network.target
 User=prometheus
 Group=prometheus
 Type=simple
-ExecStart=/tools/prometheus-2.49.0-rc.0.linux-amd64/prometheus \
-    --config.file /tools/prometheus-2.49.0-rc.0.linux-amd64/prometheus.yml \
-    --storage.tsdb.path /tools/prometheus-2.49.0-rc.0.linux-amd64/data \
-    --web.console.templates=/tools/prometheus-2.49.0-rc.0.linux-amd64/consoles \
-    --web.console.libraries=/tools/prometheus-2.49.0-rc.0.linux-amd64/console_libraries
+ExecStart=/tools/prometheus-3.5.0.linux-amd64/prometheus \
+    --config.file /tools/prometheus-3.5.0.linux-amd64/prometheus.yml \
+    --storage.tsdb.path /tools/prometheus-3.5.0.linux-amd64/data \
+    --web.console.templates=/tools/prometheus-3.5.0.linux-amd64/consoles \
+    --web.console.libraries=/tools/prometheus-3.5.0.linux-amd64/console_libraries
 
 [Install]
 WantedBy=multi-user.target
@@ -25,7 +25,11 @@ WantedBy=multi-user.target
 # Create user and group for prometheus to run
 sudo useradd -r -s /bin/false prometheus
 sudo usermod -aG prometheus prometheus
-sudo chown -R prometheus:prometheus /tools/prometheus-2.49.0-rc.0.linux-amd64
+sudo chown -R prometheus:prometheus /tools/prometheus-3.5.0.linux-amd64
+
+# If SELinux is enabled and causing issues, then fix that
+getenforce
+sudo setenforce 0
 
 # Restarting the daemon and prometheus
 sudo systemctl daemon-reload
@@ -34,8 +38,14 @@ sudo systemctl start prometheus
 sudo systemctl status prometheus
  
 # If you still face any permission issues then try giving full access to the prometheus folder under /tools 
-chmod 777 /tools/
-chmod 777 /tools/prometheus-2.49.0-rc.0.linux-amd64
+sudo chmod 777 /tools/
+sudo chmod 777 /tools/prometheus-3.5.0.linux-amd64
+(or)
+sudo chmod -R 755 /tools/prometheus-3.5.0.linux-amd64
+sudo chmod o+rx /tools
+sudo chmod +x /tools/prometheus-3.5.0.linux-amd64/prometheus
+
+
 
 
 Note:
