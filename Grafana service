@@ -24,6 +24,9 @@ sudo dnf install grafana
 sudo firewall-cmd --permanent --add-port=3000/tcp
 sudo firewall-cmd --reload
 
+# Allowing all IPv4's to access Grafana service via internet
+Inbound open port 3000 from Any IPv4 
+
 # Starting the service
 sudo systemctl enable grafana-server
 sudo systemctl start grafana-server
