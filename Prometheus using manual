@@ -9,15 +9,19 @@ mkdir tools
 cd tools/
 
 # Downloading the binary from its official website
-wget https://github.com/prometheus/prometheus/releases/download/v2.49.0-rc.0/prometheus-2.49.0-rc.0.linux-amd64.tar.gz
-tar -xvf prometheus-2.49.0-rc.0.linux-amd64.tar.gz prometheus-2.49.0-rc.0.linux-amd64/
-cd prometheus-2.49.0-rc.0.linux-amd64/
+yum install wget
+wget https://github.com/prometheus/prometheus/releases/download/v3.5.0/prometheus-3.5.0.linux-amd64.tar.gz
+tar -xvf prometheus-3.5.0.linux-amd64.tar.gz prometheus-3.5.0.linux-amd64/
+cd prometheus-3.5.0.linux-amd64/
 
 # Allowing the ports at system level to enable access to prometheus
 sudo yum install firewalld
 sudo systemctl start firewalld
 sudo firewall-cmd --permanent --add-port=9090/tcp
 sudo firewall-cmd --reload
+
+# Allowing the ports at server level to host prometheus and access the same via internet
+Inbound open port 9090 from Any IPv4 
 
 # Starting the prometheus manually (But this is suitable only for development and testing, in production environment it is recommended to run prometheus as a service because in manual method it will not restart automatically if prometheus gets crashed. Handling prometheus as a service enables the systemd to take care of it and boots it up automatically if server is restarted)
 ./prometheus (or) ./prometheus --config.file=prometheus.yml
