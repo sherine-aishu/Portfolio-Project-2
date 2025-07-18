@@ -3,13 +3,16 @@ One such popular exporter is Node exporter. Let's understand how to install and 
 
 # Moving to the appropriate folder and downloading its binary from official website
 cd /tools/
-wget https://github.com/prometheus/node_exporter/releases/download/v1.7.0/node_exporter-1.7.0.linux-amd64.tar.gz
-tar -xvf node_exporter-1.7.0.linux-amd64.tar.gz
-cd node_exporter-1.7.0.linux-amd64/
+wget https://github.com/prometheus/node_exporter/releases/download/v1.1.0/node_exporter-1.1.0.linux-amd64.tar.gz
+tar -xvf node_exporter-1.1.0.linux-amd64.tar.gz
+cd node_exporter-1.1.0.linux-amd64/
 
 # Allowing the ports at system level to enable access to node exporter 
 sudo firewall-cmd --permanent --add-port=9100/tcp
 sudo firewall-cmd --reload
+
+# Allowing the ports at server level for prometheus to scrape node exporter metrics and access the same via internet
+Inbound open port 9100 from Any IPv4 
 
 # Modifying the prometheus.yml file to add node exporter metrics as an target endpoint
 ***********************************************************************************************       	   
