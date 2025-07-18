@@ -1,4 +1,10 @@
+# Install a Redhat EC2 Instance with below configuration
+AMI : Redhat
+Storage : 20 GB
+Instance Type : t2.medium
+
 # Creating a directory for our tools
+cd /
 mkdir tools
 cd tools/
 
