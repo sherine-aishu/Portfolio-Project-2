@@ -13,7 +13,7 @@ Hence, Prom is trying to access host in port 9100, hence in SG of prom under out
 Similarly, in node IP SG, under inbound allow prom IP for port 9090.
 
 In short: In Prom SG : outbound on 9100 for hostip; 
-          In host SG : inbound on 9090 for promip
+          In host SG : inbound on 9100 for promip
 
 # Updating the yaml file of prometheus
 For prometheus to scrape metrics from the node exporter of your host machine, we need to update the prometheus.yml file.
