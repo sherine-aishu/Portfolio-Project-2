@@ -10,7 +10,7 @@ As a result in your local host machine you should be able to see metrics via cur
 Promtheus will pull metrics from host
 Here prometheus is running on port 9090 (promIP:9090) ; node exporter is running on host port nodeexporter-hostIP:9100
 Hence, Prom is trying to access host in port 9100, hence in SG of prom under outbound allow IP of node for port 9100. 
-Similarly, in node IP SG, under inbound allow prom IP for port 9090.
+Similarly, in node IP SG, under inbound allow prom IP for port 9100.
 
 In short: In Prom SG : outbound on 9100 for hostip; 
           In host SG : inbound on 9100 for promip
